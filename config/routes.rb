@@ -1,20 +1,9 @@
 Palakura::Application.routes.draw do
-  get "users/new"
 
-  get "users/create"
-
-  get "users/show"
-
-  get "users/edit"
-
-  get "users/update"
-
-  get "user_sessions/new"
-
-  get "user_sessions/create"
-
-  get "user_sessions/destroy"
-
+  match 'login' => 'user_sessions#create'
+  match 'logout' => 'user_sessions#destroy'
+  resource :user_session
+  resource :account, :controller => "users"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
