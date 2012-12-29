@@ -7,7 +7,7 @@ class Spinach::Features::TestHowUsWorks < Spinach::FeatureSteps
   end
 
   step 'the I should see something' do
-    puts page.body
+    #puts page.body
     page.body.should include('Login')
   end
 end
