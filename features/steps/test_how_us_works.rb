@@ -3,7 +3,7 @@ class Spinach::Features::TestHowUsWorks < Spinach::FeatureSteps
     #pending 'step not implemented'
     Authlogic::Session::Base.controller = Authlogic::ControllerAdapters::RailsAdapter.new(self)
     #UserSession.create(:login => "testuser", :password => "test", :remember_me => true)
-    visit account_path
+    visit new_user_session_path
   end
 
   step 'the I should see something' do
