@@ -4,14 +4,18 @@ class Spinach::Features::TryToLogIn < Spinach::FeatureSteps
   end
 
   step 'I enter correct login and password' do
-    pending 'step not implemented'
+    #if you don't have the user in the databse you need to create a User object instance
+    fill_in 'Login', :with => 'testuser'
+    fill_in 'Password', :with => 'test'
+    #puts page.body
   end
 
   step 'I click Login button' do
-    pending 'step not implemented'
+    click_button('Login')
   end
 
   step 'page should contain Current login ip' do
-    pending 'step not implemented'
+    #puts page.body
+    page.body.should include('Current login ip')
   end
 end
