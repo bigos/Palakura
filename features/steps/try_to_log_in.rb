@@ -1,10 +1,13 @@
 class Spinach::Features::TryToLogIn < Spinach::FeatureSteps
-  step 'I have test user in the database' do
-    if User.find(:first, :conditions => "login = 'testuser'").blank?
-      u=User.new(login=>'testuser', password=>'test', password_confirmation=>'test')
-      u.save
-    end
-  end
+  include CommonSteps::PrepareUser
+
+  # including code from Common Steps you don't need the code below
+  # step 'I have test user in the database' do
+  #   if User.find(:first, :conditions => "login = 'testuser'").blank?
+  #     u=User.new(login=>'testuser', password=>'test', password_confirmation=>'test')
+  #     u.save
+  #   end
+  # end
 
   step 'I visit login page' do
     visit 'http://localhost:3000/login'
