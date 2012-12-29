@@ -1,10 +1,18 @@
 class Spinach::Features::TryToLogIn < Spinach::FeatureSteps
+  step 'I have test user in the database' do
+    if User.find(:first, :conditions => "login = 'testuser'").blank?
+      u=User.new(login=>'testuser', password=>'test', password_confirmation=>'test')
+      u.save
+    end
+  end
+
   step 'I visit login page' do
     visit 'http://localhost:3000/login'
   end
 
   step 'I enter correct login and password' do
     #if you don't have the user in the databse you need to create a User object instance
+
     fill_in 'Login', :with => 'testuser'
     fill_in 'Password', :with => 'test'
     #puts page.body
